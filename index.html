@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matías Bustos Lagos · Ingeniero de software</title>
+<meta name="description" content="Ingeniero de software en Concepción, Chile. Desarrollo software y administro la infraestructura donde corre.">
+<meta property="og:title" content="Matías Bustos Lagos, ingeniero de software">
+<meta property="og:description" content="Desarrollo software y administro la infraestructura donde corre.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect y='0' width='32' height='6' fill='%23A6D5D6'/><rect y='6.5' width='32' height='6' fill='%2364ABBA'/><rect y='13' width='32' height='6' fill='%232F7C99'/><rect y='19.5' width='32' height='6' fill='%231D5577'/><rect y='26' width='32' height='6' fill='%2312334F'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #EEF2F5;
+  --ink: #13202E;
+  --muted: #4A5868;
+  --line: #C9D3DC;
+  --focus: #B86E0E;
+  --l-ui: #A6D5D6;
+  --l-svc: #64ABBA;
+  --l-ctr: #2F7C99;
+  --l-srv: #1D5577;
+  --l-data: #12334F;
+  --on-light: #13202E;
+  --on-dark: #F2F7FA;
+  --font: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #0E1822;
+    --ink: #E4ECF2;
+    --muted: #9CAEBD;
+    --line: #26384A;
+    --focus: #F0A83A;
+    --l-ui: #B5E0DF;
+    --l-svc: #79BCC8;
+    --l-ctr: #3F93AE;
+    --l-srv: #2A6E93;
+    --l-data: #1E4F74;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1.5rem 0; flex-wrap: wrap; }
+.top .name { font-weight: 700; text-decoration: none; }
+.top nav { display: flex; gap: 1.25rem; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--ink); text-decoration: underline; }
+
+/* Hero */
+.hero { padding: 4rem 0 3.5rem; }
+.hero h1 {
+  font-size: clamp(2.3rem, 5.2vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  margin: 0 0 1.5rem;
+  max-width: 17ch;
+}
+.hero p { max-width: 58ch; color: var(--muted); margin: 0 0 1.75rem; font-size: 1.15rem; }
+.hero .actions { display: flex; gap: 1.5rem; flex-wrap: wrap; font-weight: 600; }
+
+/* Work */
+.work { padding: 2rem 0 4rem; }
+h2 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 1.5rem; font-weight: 700; }
+.work-grid { display: grid; grid-template-columns: 21rem 1fr; gap: 3.5rem; align-items: start; }
+
+.stack-panel { position: sticky; top: 1.5rem; }
+.stack-panel .caption { color: var(--muted); margin: 0 0 1rem; font-size: 0.975rem; }
+.stack { display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; }
+.layer {
+  display: block;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: opacity .25s, padding-left .25s;
+}
+.layer .layer-name { display: block; font-weight: 700; font-size: 1.05rem; }
+.layer .layer-tech { display: block; font-size: 0.875rem; opacity: 0.85; }
+.layer[data-layer="ui"] { background: var(--l-ui); color: var(--on-light); }
+.layer[data-layer="svc"] { background: var(--l-svc); color: var(--on-light); }
+.layer[data-layer="ctr"] { background: var(--l-ctr); color: var(--on-dark); }
+.layer[data-layer="srv"] { background: var(--l-srv); color: var(--on-dark); }
+.layer[data-layer="data"] { background: var(--l-data); color: var(--on-dark); }
+.layer:hover { padding-left: 1.6rem; }
+.layer:focus-visible { outline-offset: -4px; outline-color: var(--ink); border-radius: 0; }
+.stack.has-selection .layer { opacity: 0.4; }
+.stack.has-selection .layer[aria-pressed="true"] { opacity: 1; padding-left: 1.6rem; }
+.status { margin: 1rem 0 0; font-size: 0.95rem; color: var(--muted); min-height: 1.6em; }
+.clear {
+  margin-top: 0.5rem;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.clear:hover { border-color: var(--ink); }
+
+.projects { list-style: none; margin: 0; padding: 0; }
+.project {
+  display: grid;
+  grid-template-columns: 0.75rem 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+  transition: opacity .25s;
+}
+.project:first-child { border-top: 0; padding-top: 0; }
+.project.is-dim { opacity: 0.3; }
+.span { display: grid; grid-template-rows: repeat(5, 1fr); gap: 3px; min-height: 6rem; }
+.span i { display: block; border-radius: 2px; background: var(--line); }
+.span i.l-ui { background: var(--l-ui); }
+.span i.l-svc { background: var(--l-svc); }
+.span i.l-ctr { background: var(--l-ctr); }
+.span i.l-srv { background: var(--l-srv); }
+.span i.l-data { background: var(--l-data); }
+.project h3 { font-size: 1.3rem; line-height: 1.25; margin: 0 0 0.25rem; letter-spacing: -0.005em; }
+.project .context { margin: 0 0 0.75rem; color: var(--muted); font-size: 0.95rem; }
+.project .desc { margin: 0 0 0.75rem; max-width: 62ch; }
+.project .tech { margin: 0; font-size: 0.95rem; color: var(--muted); }
+.project .tech strong { color: var(--ink); font-weight: 600; }
+.note { margin: 1.5rem 0 0 2.25rem; color: var(--muted); font-size: 0.95rem; }
+
+/* Tools */
+.tools { padding: 4rem 0; border-top: 1px solid var(--line); }
+.tools-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 3rem; }
+.tools h3 { font-size: 1.05rem; margin: 0 0 0.35rem; }
+.tools p { margin: 0; color: var(--muted); max-width: 34ch; }
+
+/* Path */
+.path { padding: 4rem 0; border-top: 1px solid var(--line); }
+.path-grid { display: grid; grid-template-columns: 1fr 21rem; gap: 3.5rem; align-items: start; }
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+.timeline li:first-child { border-top: 0; padding-top: 0; }
+.timeline .when { color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline .role { font-weight: 700; margin: 0; }
+.timeline .org { margin: 0; color: var(--muted); }
+.timeline .what { margin: 0.35rem 0 0; max-width: 56ch; }
+.extras h3 { font-size: 1.05rem; margin: 0 0 0.35rem; }
+.extras p { margin: 0 0 1.5rem; color: var(--muted); }
+.extras p strong { color: var(--ink); font-weight: 600; }
+
+/* Contact */
+.contact { padding: 4rem 0 5rem; border-top: 1px solid var(--line); }
+.contact p { color: var(--muted); max-width: 52ch; margin: 0 0 1.5rem; }
+.contact .mail { display: inline-block; font-size: clamp(1.4rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 1.25rem; word-break: break-word; }
+.contact .others { display: flex; gap: 0.75rem 1.5rem; flex-wrap: wrap; font-weight: 600; }
+
+footer { padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: 0.9rem; }
+
+/* Load sequence: the stack settles once */
+@media (prefers-reduced-motion: no-preference) {
+  .layer { animation: settle .55s cubic-bezier(.2,.7,.2,1) both; }
+  .layer:nth-child(2) { animation-delay: .06s; }
+  .layer:nth-child(3) { animation-delay: .12s; }
+  .layer:nth-child(4) { animation-delay: .18s; }
+  .layer:nth-child(5) { animation-delay: .24s; }
+  @keyframes settle { from { transform: translateY(-14px); opacity: 0; } to { transform: none; opacity: 1; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .layer, .project { transition: none; }
+}
+
+@media (max-width: 860px) {
+  .hero { padding: 2.5rem 0 2.5rem; }
+  .work-grid, .path-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stack-panel { position: static; }
+  .layer { padding: 0.75rem 1rem; }
+  .layer:hover, .stack.has-selection .layer[aria-pressed="true"] { padding-left: 1.3rem; }
+  .timeline li { grid-template-columns: 1fr; gap: 0.25rem; }
+  .note { margin-left: 0; }
+}
+@media (max-width: 520px) {
+  .tools-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="#">Matías Bustos Lagos</a>
+    <nav aria-label="Secciones">
+      <a href="#trabajo">Trabajo</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Desarrollo software y administro la infraestructura donde corre.</h1>
+      <p>Soy ingeniero de software en Concepción, Chile. Desde 2020 construyo y mantengo sistemas en producción, y hoy trabajo en plataformas de e-learning, capacitación online y realidad virtual para organismos públicos e instituciones de educación.</p>
+      <div class="actions">
+        <a href="mailto:matiasbustoslagos@gmail.com">matiasbustoslagos@gmail.com</a>
+        <a href="https://www.linkedin.com/in/matias-bustos-lagos-43730022b/">LinkedIn</a>
+        <a href="https://github.com/MatiasSeb">GitHub</a>
+        <a href="cv-es.pdf">Descargar CV</a>
+      </div>
+    </section>
+
+    <section class="work" id="trabajo" aria-labelledby="trabajo-title">
+      <h2 id="trabajo-title">Trabajo seleccionado</h2>
+      <div class="work-grid">
+        <div class="stack-panel">
+          <p class="caption" id="stack-caption">Cada proyecto atraviesa capas distintas del sistema. Elige una para ver en qué proyectos aparece.</p>
+          <div class="stack" role="group" aria-labelledby="stack-caption">
+            <button class="layer" type="button" data-layer="ui" aria-pressed="false">
+              <span class="layer-name">Interfaz</span>
+              <span class="layer-tech">React, Vite, Streamlit, WordPress</span>
+            </button>
+            <button class="layer" type="button" data-layer="svc" aria-pressed="false">
+              <span class="layer-name">Servicios</span>
+              <span class="layer-tech">Python, PHP, Node.js, Flask, APIs</span>
+            </button>
+            <button class="layer" type="button" data-layer="ctr" aria-pressed="false">
+              <span class="layer-name">Contenedores</span>
+              <span class="layer-tech">Docker, Kubernetes, Traefik, RabbitMQ</span>
+            </button>
+            <button class="layer" type="button" data-layer="srv" aria-pressed="false">
+              <span class="layer-name">Servidores</span>
+              <span class="layer-tech">Linux, Nginx, Apache, NFS, DNS</span>
+            </button>
+            <button class="layer" type="button" data-layer="data" aria-pressed="false">
+              <span class="layer-name">Datos</span>
+              <span class="layer-tech">PostgreSQL, MySQL, respaldos con Borg</span>
+            </button>
+          </div>
+          <p class="status" aria-live="polite">Mostrando todos los proyectos.</p>
+          <button class="clear" type="button" hidden>Ver todos los proyectos</button>
+        </div>
+
+        <div>
+          <ul class="projects">
+            <li class="project" data-layers="svc srv data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Operación de plataformas de capacitación en producción</h3>
+                <p class="context">En TDCLA, para organismos públicos</p>
+                <p class="desc">Junto al líder técnico, mantengo funcionando plataformas de capacitación online con WordPress y FormaLMS: servidores web detrás de balanceadores de carga, bases de datos, almacenamiento compartido por NFS, monitoreo y soporte.</p>
+                <p class="tech"><strong>Con</strong> Linux, Apache, Nginx, MySQL, NFS, Grafana</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="ctr srv data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Migración de plataformas de e-learning a Kubernetes</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Trasladé plataformas de aprendizaje en producción desde servidores tradicionales a un cluster Kubernetes, con Traefik como punto de entrada y certificados SSL que se renuevan solos con cert-manager. Hoy varias aplicaciones conviven en el mismo cluster, y estoy llevando a contenedores un portal de capacitación con WordPress y FormaLMS que corría en un servidor Apache tradicional.</p>
+                <p class="tech"><strong>Con</strong> Kubernetes, Docker, Traefik, cert-manager, Moodle, WordPress, FormaLMS</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="svc ctr srv data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Migración de producción de una plataforma de realidad virtual</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Moví el ambiente productivo completo (API, aplicación web, cola de mensajes y carga reanudable de archivos) a un nuevo servidor, con corte por DNS y el ambiente anterior pausado como respaldo.</p>
+                <p class="tech"><strong>Con</strong> Docker, RabbitMQ, TUS, Nginx, DNS</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="svc ctr srv">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Proxy de contenido para lentes de realidad virtual</h3>
+                <p class="context">En TDCLA, para sedes de una institución de educación superior</p>
+                <p class="desc">Proxy que distribuye el contenido a los lentes de realidad virtual de cada sede. Lo instalé y lo opero desde el piloto, con un despliegue pensado para replicarse sede por sede.</p>
+                <p class="tech"><strong>Con</strong> Node.js, Nginx, Docker</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="ui svc data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Aplicación de reportería</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Aplicación de métricas con backend en Flask, frontend en React y base de datos PostgreSQL, que desarrollé y migré a un nuevo servidor.</p>
+                <p class="tech"><strong>Con</strong> Python, Flask, React, Vite, PostgreSQL, Pentaho</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="ui svc">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Integración entre WordPress y Moodle</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Plugin propio que conecta los cursos publicados en un sitio WordPress con sus cursos en Moodle, para que cada usuario llegue directo a su curso.</p>
+                <p class="tech"><strong>Con</strong> PHP, WordPress, Moodle</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="svc srv">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Respuesta a un incidente de seguridad en WordPress</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Analicé y limpié un sitio vulnerado, bloqueé la amenaza y dejé un mecanismo que cierra la escritura de archivos cuando no se necesita.</p>
+                <p class="tech"><strong>Con</strong> Linux, Apache, Bash, WordPress</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="srv data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Servidor de respaldos</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Respaldos de bases de datos de producción en un servidor dedicado, con copias deduplicadas gestionadas por Borg y Borgmatic.</p>
+                <p class="tech"><strong>Con</strong> Linux, Borg, Borgmatic, PostgreSQL</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Cargas masivas de usuarios a un campus virtual</h3>
+                <p class="context">En TDCLA</p>
+                <p class="desc">Proceso periódico para cargar y actualizar usuarios desde planillas Excel: limpieza y normalización de los datos antes de cruzarlos con la base de datos del campus.</p>
+                <p class="tech"><strong>Con</strong> SQL, Excel, CSV</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+            <li class="project" data-layers="ui svc data">
+              <div class="span" aria-hidden="true"></div>
+              <div>
+                <h3>Plataforma SCADA para aserraderos</h3>
+                <p class="context">Proyecto de título en la Universidad del Bío-Bío, 2022</p>
+                <p class="desc">Plataforma de supervisión y adquisición de datos para pymes madereras, con autenticación y control de acceso por roles.</p>
+                <p class="tech"><strong>Con</strong> Python, Streamlit, Flask, SQLAlchemy, MySQL</p>
+                <p class="sr-only sr-layers"></p>
+              </div>
+            </li>
+          </ul>
+          <p class="note">Por confidencialidad, no nombro a los clientes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools" id="herramientas" aria-labelledby="herramientas-title">
+      <h2 id="herramientas-title">Herramientas</h2>
+      <div class="tools-grid">
+        <div><h3>Lenguajes</h3><p>Python, PHP, JavaScript, TypeScript, SQL, Bash</p></div>
+        <div><h3>Frameworks</h3><p>Flask, Streamlit, Laravel, React, Node.js, Express</p></div>
+        <div><h3>Infraestructura y DevOps</h3><p>Linux, Docker, Kubernetes, Traefik, Nginx, Apache, RabbitMQ, Grafana, Borg, GitLab CI, Git</p></div>
+        <div><h3>Bases de datos</h3><p>PostgreSQL, MySQL, MongoDB</p></div>
+        <div><h3>Plataformas</h3><p>Moodle, FormaLMS, WordPress, Pentaho</p></div>
+        <div><h3>Cloud</h3><p>DigitalOcean, AWS, Google Cloud</p></div>
+      </div>
+    </section>
+
+    <section class="path" id="trayectoria" aria-labelledby="trayectoria-title">
+      <h2 id="trayectoria-title">Trayectoria</h2>
+      <div class="path-grid">
+        <ol class="timeline" reversed>
+          <li>
+            <span class="when">2024 a hoy</span>
+            <div>
+              <p class="role">Desarrollador de software</p>
+              <p class="org">TDCLA, remoto</p>
+              <p class="what">Desarrollo e infraestructura de plataformas de e-learning, capacitación online y realidad virtual, junto al líder técnico.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2021 a 2023</span>
+            <div>
+              <p class="role">Ingeniero y analista IT</p>
+              <p class="org">CACEFI, Concepción</p>
+              <p class="what">Consultoría TI, plan de mejora tecnológica e implementación de Microsoft 365.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2020 a 2021</span>
+            <div>
+              <p class="role">Desarrollador web, práctica</p>
+              <p class="org">BioBioApps, Concepción</p>
+              <p class="what">Módulos backend y frontend en WordPress.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2020</span>
+            <div>
+              <p class="role">Soporte TI, práctica</p>
+              <p class="org">Corporación Newen Educa, Concepción</p>
+            </div>
+          </li>
+        </ol>
+        <div class="extras">
+          <h3>Formación</h3>
+          <p><strong>Ingeniería de Ejecución en Computación e Informática</strong><br>Universidad del Bío-Bío, 2023</p>
+          <h3>Idiomas</h3>
+          <p><strong>Inglés C2</strong>, certificado EF SET (2023)<br>Español nativo</p>
+          <h3>Certificaciones</h3>
+          <p><strong>Foundations of AI for Software Development</strong><br>GitKraken, 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto</h2>
+      <p>La forma más rápida de hablar conmigo es por correo.</p>
+      <a class="mail" href="mailto:matiasbustoslagos@gmail.com">matiasbustoslagos@gmail.com</a>
+      <div class="others">
+        <a href="https://www.linkedin.com/in/matias-bustos-lagos-43730022b/">LinkedIn</a>
+        <a href="https://github.com/MatiasSeb">GitHub</a>
+        <a href="cv-es.pdf">CV en español</a>
+        <a href="cv-en.pdf">CV in English</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Matías Bustos Lagos, Concepción, Chile</footer>
+</div>
+
+<script>
+(function () {
+  var NAMES = { ui: "Interfaz", svc: "Servicios", ctr: "Contenedores", srv: "Servidores", data: "Datos" };
+  var ORDER = ["ui", "svc", "ctr", "srv", "data"];
+  var projects = Array.prototype.slice.call(document.querySelectorAll(".project"));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".layer"));
+  var stack = document.querySelector(".stack");
+  var status = document.querySelector(".status");
+  var clearBtn = document.querySelector(".clear");
+  var active = null;
+
+  projects.forEach(function (p) {
+    var layers = p.dataset.layers.split(" ");
+    var bar = p.querySelector(".span");
+    ORDER.forEach(function (k) {
+      var cell = document.createElement("i");
+      if (layers.indexOf(k) !== -1) cell.className = "l-" + k;
+      bar.appendChild(cell);
+    });
+    p.querySelector(".sr-layers").textContent =
+      "Capas: " + layers.map(function (k) { return NAMES[k]; }).join(", ") + ".";
+  });
+
+  function apply() {
+    var count = 0;
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.layer === active));
+    });
+    stack.classList.toggle("has-selection", active !== null);
+    projects.forEach(function (p) {
+      var match = active === null || p.dataset.layers.split(" ").indexOf(active) !== -1;
+      p.classList.toggle("is-dim", !match);
+      if (match) count++;
+    });
+    if (active === null) {
+      status.textContent = "Mostrando todos los proyectos.";
+    } else {
+      status.textContent = count === 1
+        ? "1 proyecto trabaja en la capa " + NAMES[active] + "."
+        : count + " proyectos trabajan en la capa " + NAMES[active] + ".";
+    }
+    clearBtn.hidden = active === null;
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      active = active === b.dataset.layer ? null : b.dataset.layer;
+      apply();
+    });
+  });
+  clearBtn.addEventListener("click", function () {
+    active = null;
+    apply();
+    buttons[0].focus();
+  });
+})();
+</script>
+</body>
+</html>
